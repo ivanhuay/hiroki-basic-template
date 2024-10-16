@@ -1,3 +1,4 @@
+'use strict';
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -9,10 +10,10 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ['admin', 'user'],
-        default: 'user',
-    },
+        default: 'user'
+    }
 }, {
-    timestamps: true,
+    timestamps: true
 });
 
 userSchema.methods.generateHash = function(password) {

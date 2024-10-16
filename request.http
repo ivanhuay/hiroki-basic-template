@@ -1,0 +1,38 @@
+# Replace with a jwt response from login request
+# add JWT_TOKEN in local.env file 
+@token = ${JWT_TOKEN}
+
+### 
+#Login with demo credentials
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "demo",
+    "password": "demo"
+}
+
+###
+# Get home
+GET http://localhost:3000/api/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+# Get notes
+GET http://localhost:3000/api/notes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+# Create note
+POST http://localhost:3000/api/notes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "Title",
+    "content": "Some random content",
+    "description": "This is a test content"
+}

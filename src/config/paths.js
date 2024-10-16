@@ -1,3 +1,4 @@
+'use strict';
 const publicPaths = ['api/auth/login', 'api/auth/signup'];
 
 const prefix = '^\/';

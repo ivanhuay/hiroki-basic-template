@@ -15,17 +15,19 @@
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.2",
-    "express": "^4.19.2",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
     "hiroki": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.3.2",
-    "pino-http": "^9.0.0"
+    "mongoose": "^8.7.1",
+    "pino-http": "^10.3.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.1.1",
-    "eslint": "^9.1.1",
-    "globals": "^15.1.0",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.11.0",
+    "prettier": "^3.3.3",
     "pino-pretty": "^11.0.0"
   }
 }

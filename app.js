@@ -1,3 +1,4 @@
+'use strict';
 const {DB_PORT, DB_HOST, DB_NAME, APP_PORT} = process.env;
 
 const mongoose = require('mongoose');
@@ -12,7 +13,6 @@ const extraxtJwt = require('./src/routes/extractJwt');
 const auth = require('./src/routes/auth');
 const app = express();
 
-mongoose.Promise = global.Promise;
 mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`);
 
 
@@ -33,11 +33,15 @@ app.use('/api/auth', auth);
 
 app.use('/api/*', async(req, res) => {
     const path = req.originalUrl;
-    const resp = await hiroki.process(path, {
-        method: req.method,
-        body: req.body
-    });
-    res.status(resp.status || 200).json(resp);
+    try {
+        const resp = await hiroki.process(path, {
+            method: req.method,
+            body: req.body
+        });
+        res.status(resp.status || 200).json(resp);
+    } catch (error) {
+        res.status(error.status || 500).json({error: error.message});
+    }
 });
 
 app.listen(APP_PORT, () => {
